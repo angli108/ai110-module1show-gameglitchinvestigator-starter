@@ -1,7 +1,9 @@
 import random
 import streamlit as st
+from logic_utils import check_guess
 
 def get_range_for_difficulty(difficulty: str):
+    """Returns the (low, high) number range for the selected difficulty."""
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
@@ -12,6 +14,8 @@ def get_range_for_difficulty(difficulty: str):
 
 
 def parse_guess(raw: str):
+    """Validates and converts the raw text input into an integer. Returns a tuple (ok, value,
+  error_message). Handles floats (truncates them) and non-numeric strings."""
     if raw is None:
         return False, None, "Enter a guess."
 
@@ -29,25 +33,15 @@ def parse_guess(raw: str):
     return True, value, None
 
 
-def check_guess(guess, secret):
-    if guess == secret:
-        return "Win", "🎉 Correct!"
-
-    try:
-        if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
-        else:
-            return "Too Low", "📉 Go LOWER!"
-    except TypeError:
-        g = str(guess)
-        if g == secret:
-            return "Win", "🎉 Correct!"
-        if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
-
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
+    """Adjusts the score based on the outcome:
+        - Win → 100 - 10 * (attempt + 1), minimum 10 points
+        - Too High on even attempt → +5 points (rewards even-attempt high guesses)
+        - Too High on odd attempt → -5 points
+        - Too Low → always -5 points
+    """
+
     if outcome == "Win":
         points = 100 - 10 * (attempt_number + 1)
         if points < 10:
@@ -64,6 +58,7 @@ def update_score(current_score: int, outcome: str, attempt_number: int):
 
     return current_score
 
+#### Streamlit UI ###
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
 st.title("🎮 Game Glitch Investigator")
@@ -155,12 +150,8 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
-
-        outcome, message = check_guess(guess_int, secret)
+        # FIX: On even attempts, secret was cast to str, breaking numeric comparison. Used Claude Code removed it so secret is always passed as an int.
+        outcome, message = check_guess(guess_int, st.session_state.secret)
 
         if show_hint:
             st.warning(message)
