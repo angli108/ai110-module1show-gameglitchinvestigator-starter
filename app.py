@@ -1,6 +1,6 @@
 import random
 import streamlit as st
-from logic_utils import check_guess
+from logic_utils import check_guess, parse_guess
 
 def get_range_for_difficulty(difficulty: str):
     """Returns the (low, high) number range for the selected difficulty."""
@@ -11,26 +11,6 @@ def get_range_for_difficulty(difficulty: str):
     if difficulty == "Hard":
         return 1, 50
     return 1, 100
-
-
-def parse_guess(raw: str):
-    """Validates and converts the raw text input into an integer. Returns a tuple (ok, value,
-  error_message). Handles floats (truncates them) and non-numeric strings."""
-    if raw is None:
-        return False, None, "Enter a guess."
-
-    if raw == "":
-        return False, None, "Enter a guess."
-
-    try:
-        if "." in raw:
-            value = int(float(raw))
-        else:
-            value = int(raw)
-    except Exception:
-        return False, None, "That is not a number."
-
-    return True, value, None
 
 
 
@@ -87,8 +67,9 @@ st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
+#FIX: attempts initializes to 1 instead of 0                                 
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0
 
 if "score" not in st.session_state:
     st.session_state.score = 0
@@ -126,9 +107,12 @@ with col2:
 with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
+#FIX: New Game" properly resets status to "playing", clears history, and uses the correct range for the selected difficulty using AI 
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.secret = random.randint(low, high)
+    st.session_state.status = "playing"
+    st.session_state.history = []
     st.success("New game started.")
     st.rerun()
 

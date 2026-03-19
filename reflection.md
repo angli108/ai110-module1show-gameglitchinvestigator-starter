@@ -8,7 +8,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the secret number kept changing" or "the hints were backwards").
 
----Pressing enter doesn't sumbit the response when the text says it should. The program is suppose to give you 7 attempts but only gives you 6 attempts. When you press new game button, it gives you 8 attempts when the page originally reads 7 attempts and it doesnt actually restart the game. It also seems the program will randomly tell you to go higher or lower regardless of the actual secret number, even when your inputs pass the range of 1-100, until runs out of attempts. The secret number also doesnt follow the range of the diffulcty level. Also not an error but when click on the submit guess button, there is no user friendly indication that the guess is correct or wrong other than the attemps left going down.
+---Pressing enter doesn't sumbit the response when the text says it should. The program is suppose to give you a certain amount of attempts but only gives you 6 attempts. When you press new game button, it gives you 8 attempts when the page originally reads 7 attempts and it doesnt actually restart the game. It also seems the program will randomly tell you to go higher or lower regardless of the actual secret number, even when your inputs pass the range of 1-100, until runs out of attempts. The secret number also doesnt follow the range of the diffulcty level. Also not an error but when click on the submit guess button, there is no user friendly indication that the guess is correct or wrong other than the attemps left going down.
 
 ## 2. How did you use AI as a teammate?
 
@@ -41,3 +41,5 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+"Move the parse_guess function to logic_utils.py, and update the import in app.py.
