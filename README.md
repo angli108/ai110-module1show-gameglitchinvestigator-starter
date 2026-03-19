@@ -41,15 +41,14 @@ Bugs Found
   7. The debug history did not show the latest guess until you clicked submit   
   again.   
 
-  Fizes included  adding a session state guard so the secret number stays stable, correcting the swapped hint messages, 
+  Fixes included  adding a session state guard so the secret number stays stable, correcting the swapped hint messages, 
   and removing a string cast that broke number comparisons. The attempt counter was also fixed to start at 0, and Easy mode was 
   given 10 attempts instead of 6 so it is actually easier than Normal. Finally, the submit button was wrapped in aform so one click registers correctly, and the debug expander was moved to after the submit block so history update first.                            
 
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
- ![Gameplay screenshot](image.png)  
+![Gameplay screenshot](Screenshot%202026-03-19%20at%2011.01.55%20AM.png)  
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
