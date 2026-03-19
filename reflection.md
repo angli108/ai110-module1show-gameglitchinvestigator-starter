@@ -33,7 +33,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 - What change did you make that finally gave the game a stable secret number?
 
----
+---The secret number kept changing because the program was regenerating the secret number every time user had interaction with the program. Essentially everytime user has an interaction with Streamlit, it would re-run the entire program, reading the lines from top to bottom all over again. I added added the if "secret" not in st.session_state: guard is it keeps the secret.
 
 ## 5. Looking ahead: your developer habits
 
@@ -41,5 +41,5 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
-
+--- I want to use the habit constant documentation in the files with the #FIX and #FIXME, I found that very helpful and also creating new terminal for every bug. Next time with AI, I would like to practice being more clear and detailed with my instructions for it. Since this project, I realized how much more streamlined my process can be when working on projects. 
 
