@@ -48,7 +48,7 @@ Bugs Found
 
 ## 📸 Demo
 
-![Gameplay screenshot](Screenshot%202026-03-19%20at%2011.01.55%20AM.png)  
+![Gameplay screenshot](screenshot.png)  
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
