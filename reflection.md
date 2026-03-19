@@ -16,7 +16,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
----I used Claude Code. After I identified bugs during my first run at the game I gave the bugs to the AI to see where the logic fault was. It correctly provided the lines and reasoning, I looked at the code and confirmed. I have yet to see an AI suggession that is incorrect or misleading. 
+---I used Claude Code. After I identified bugs during my first run at the game I gave the bugs to the AI to see where the logic fault was. It correctly provided the lines and reasoning, I looked at the code and confirmed. One time where the AI was misleading was I asked for it to create a pytest case and it assumed that I wanted to create a test for the entire program, I noticed it was askign to asssess all files so I stopped it and clarified that I want test case for the bug I jsut fixed.
 
 ## 3. Debugging and testing your fixes
 
@@ -42,4 +42,4 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
 
-"Move the parse_guess function to logic_utils.py, and update the import in app.py.
+

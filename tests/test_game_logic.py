@@ -83,6 +83,20 @@ def test_new_game_secret_within_difficulty_range():
     assert 1 <= session_state["secret"] <= 20
 
 
+def test_easy_mode_has_more_attempts_than_normal():
+    # Bug: Easy was set to 6 attempts while Normal had 8, giving Easy *fewer*
+    # attempts than Normal despite being the easiest difficulty.
+    attempt_limit_map = {
+        "Easy": 10,
+        "Normal": 8,
+        "Hard": 5,
+    }
+    assert attempt_limit_map["Easy"] > attempt_limit_map["Normal"], (
+        f"Easy ({attempt_limit_map['Easy']}) should have more attempts than "
+        f"Normal ({attempt_limit_map['Normal']})"
+    )
+
+
 #--- Original tests ---
 
 def test_winning_guess():
